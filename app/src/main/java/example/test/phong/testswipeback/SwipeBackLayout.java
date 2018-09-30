@@ -6,6 +6,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -167,11 +168,13 @@ public class SwipeBackLayout extends ViewGroup {
                 break;
         }
         boolean handled = mDragHelper.shouldInterceptTouchEvent(ev);
+        Log.e("TAG", "handled state " + handled);
         return handled ? handled : super.onInterceptTouchEvent(ev);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        Log.e("TAG", "run onTouch Swipelayout");
         mDragHelper.processTouchEvent(event);
         return true;
     }
